@@ -15,6 +15,7 @@ export class ListaTareasComponent {
   constructor( private router: Router, private tareasFirebaseService: TareasFirebaseService)
   {
     this.listaTareas = this.tareasFirebaseService.getAll() //Obtenemos las tareas de nuestra base
+    tareasFirebaseService.subirTareasPendientes()    
   }
 
   goEditar(tarea: any) // Para que se muestre la informacion de la tarea al momento de hacer click

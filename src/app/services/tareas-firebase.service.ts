@@ -3,30 +3,36 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/comp
 import { Tarea } from 'src/domain/tarea';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TareasFirebaseService {
+  private path = '/tareas';
+  private tareasRef: AngularFirestoreCollection<any>;
 
-  private path = '/tareas'
+  constructor(private db: AngularFirestore) {
+    this.tareasRef = db.collection(this.path);
+    this.tareasRef.valueChanges().subscribe((data) => {
+      console.log(data);
+    });
+  }
 
-  tareasRef : AngularFirestoreCollection<any>
+  getAll() {
+    return this.tareasRef.valueChanges();
+  }
 
-  constructor(private db:AngularFirestore) {//Conexion con la base de datos
-    this.tareasRef = db.collection(this.path)
-    this.tareasRef.valueChanges().subscribe(data => //Todos los cambios que se hagan se realiza lo que se ponga en el metodo
-      {
-        console.log(data)
-      })
-   } 
+  save(tarea: Tarea): void {
+    if (navigator.onLine) {
+      // Si hay conexión a Internet
+      this.saveToFirestore(tarea);
+    } else {
+      // Si no hay conexión a Internet, guardar en Local Storage
+      this.saveToLocal(tarea);
+    }
+  }
 
-   getAll()
-   {
-    return this.tareasRef.valueChanges()
-   }
-
-   save(tarea: Tarea): void {
+  private saveToFirestore(tarea: Tarea): void {
     // Verificar si la tarea ya existe en la colección
-    this.checkIfExists(tarea).then(exists => {
+    this.checkIfExists(tarea).then((exists) => {
       if (exists) {
         console.log('La tarea ya existe en la colección');
         console.log('Actualizando');
@@ -40,21 +46,46 @@ export class TareasFirebaseService {
     });
   }
 
-  getTarea(uid: string) {
-    return this.db.doc(this.path + '/' + uid).valueChanges();
+  private saveToLocal(tarea: Tarea): void {
+    const storedData = localStorage.getItem('tareasPendientes');
+    const tareasPendientes: Tarea[] = storedData ? JSON.parse(storedData) : [];
+    tareasPendientes.push(tarea);
+    localStorage.setItem('tareasPendientes', JSON.stringify(tareasPendientes));
   }
+  
 
-  // Nuevo método para verificar si la tarea existe
   private checkIfExists(tarea: Tarea): Promise<boolean> {
     return new Promise((resolve) => {
-      this.tareasRef.doc(tarea.uid).get().subscribe((docSnapshot) => {
-        resolve(docSnapshot.exists);
-      });
+      this.tareasRef
+        .doc(tarea.uid)
+        .get()
+        .subscribe((docSnapshot) => {
+          resolve(docSnapshot.exists);
+        });
     });
   }
 
-  deleteTarea(tarea: Tarea)
-  {
+  subirTareasPendientes(): void {
+    console.log('Llamando a subir tareas pendientes')
+    if (navigator.onLine) {
+      const storedData = localStorage.getItem('tareasPendientes');
+      if (storedData) {
+        const tareasPendientes: Tarea[] = JSON.parse(storedData);
+        tareasPendientes.forEach((tarea) => {
+          this.saveToFirestore(tarea);
+        });
+  
+        // Limpiar Local Storage después de subir las tareas
+        localStorage.removeItem('tareasPendientes');
+      }
+    }
+  }
+
+  deleteTarea(tarea: Tarea) {
     this.tareasRef.doc(tarea.uid).delete();
+  }
+
+  getTarea(uid: string) {
+    return this.db.doc(this.path + '/' + uid).valueChanges();
   }
 }
