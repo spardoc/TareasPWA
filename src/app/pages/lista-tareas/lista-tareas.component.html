@@ -1,0 +1,5 @@
+<ul>
+    <li *ngFor="let tarea of listaTareas | async"> 
+        <a routerLink="/pages/tarea/{{tarea.uid}}">{{tarea.nombre}}</a> 
+    </li>
+</ul>

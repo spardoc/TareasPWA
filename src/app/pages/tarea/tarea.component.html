@@ -1,0 +1,17 @@
+<form>
+    <label for="txtNombre">Nombre de la tarea: </label>
+    <input id="txtNombre" name="txtCedula" [(ngModel)]="tarea.nombre"/>
+    <br>
+    <label for="txtNota">Nota: </label>
+    <input id="txtNota" name="txtNota" [(ngModel)]="tarea.nota"/>
+    <br>
+    <label for="txtFecha">Fecha: </label>
+    <input id="txtFecha" name="txtFecha" [(ngModel)]="tarea.fecha"/>
+    <br>
+    <label for="txtEtiqueta">Etiqueta: </label>
+    <input id="txtEtiqueta" name="txtEtiqueta" [(ngModel)]="tarea.etiqueta"/>
+    <br>
+</form>
+<button (click)="saveTarea()">Guardar Tarea</button>
+<br>
+<button (click)="goListado()">Lista de tareas</button>

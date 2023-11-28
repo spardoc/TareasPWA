@@ -1,0 +1,32 @@
+form {
+    width: 300px;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 0 auto; /* Configurar los márgenes automáticos para centrar horizontalmente */
+    display: block; /* Convertir el botón en un bloque para ocupar todo el ancho disponible */
+}
+
+button:hover {
+    background-color: #45a049;
+}

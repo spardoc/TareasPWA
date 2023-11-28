@@ -1,0 +1,26 @@
+<form>
+    <label for="txtNombre">Nombre de la tarea: </label>
+    {{tarea.nombre}}
+    <br>
+    <br>
+    <label for="txtNota">Nota: </label>
+    {{tarea.nota}}
+    <br>
+    <br>
+    <label for="txtFecha">Fecha: </label>
+    {{tarea.fecha}}
+    <br>
+    <br>
+    <label for="txtEtiqueta">Etiqueta: </label>
+    {{tarea.etiqueta}}
+    <br>
+    <br>
+</form>
+<br>
+<button (click)="goEditar(tarea)">Editar</button>
+<br>
+<br>
+<button (click)="eliminarTarea()">Eliminar Tarea</button>
+<br>
+<br>
+<button (click)="goListado()">Lista de tareas</button>
