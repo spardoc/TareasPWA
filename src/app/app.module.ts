@@ -11,6 +11,7 @@ import { TareaComponent } from './pages/tarea/tarea.component';
 import { ListaTareasComponent } from './pages/lista-tareas/lista-tareas.component';
 import { MenuComponent } from './menu/menu.component';
 import { ViewTareaComponent } from './pages/view-tarea/view-tarea.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,13 @@ import { ViewTareaComponent } from './pages/view-tarea/view-tarea.component';
     AppRoutingModule,
     FormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
-    provideFirestore(() => getFirestore())
+    provideFirestore(() => getFirestore()),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   
   ],
   providers: [
