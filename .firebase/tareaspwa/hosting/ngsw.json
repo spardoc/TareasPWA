@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1701148585813,
+  "timestamp": 1701623604829,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "/favicon.ico",
         "/index.html",
-        "/main.1f1e123f9244628a.js",
+        "/main.4e7dd77bd865e604.js",
         "/manifest.webmanifest",
         "/polyfills.586a6f99b1cbc627.js",
         "/runtime.f7251700f7c17a05.js",
@@ -36,7 +36,8 @@
         "/assets/icons/icon-384x384.png",
         "/assets/icons/icon-512x512.png",
         "/assets/icons/icon-72x72.png",
-        "/assets/icons/icon-96x96.png"
+        "/assets/icons/icon-96x96.png",
+        "/fondoh1.efd596f0538dacaf.jpg"
       ],
       "patterns": []
     }
@@ -52,8 +53,9 @@
     "/assets/icons/icon-72x72.png": "cecaa3eb6edc27d5f1ea1beb4903d098c08887b6",
     "/assets/icons/icon-96x96.png": "13be9772214d89ad184969bad97cc56fef56db56",
     "/favicon.ico": "04c278dba3e54393c4c980f7fd4dcd43796ef813",
-    "/index.html": "43bb872b20c88453e04260e459528e72a552acdd",
-    "/main.1f1e123f9244628a.js": "82de151431a154d6bbe7450159feeb9f5beb560e",
+    "/fondoh1.efd596f0538dacaf.jpg": "bb6ae2fa21408b673ea7a6b06abc94c09a8a39f5",
+    "/index.html": "f35422e41868439f23cc36e9ac58af24c5916ffb",
+    "/main.4e7dd77bd865e604.js": "522a2275fa168987adb18cb64d7c08d0d894ed1e",
     "/manifest.webmanifest": "13127ce9d0e34bc93f4b8ea1a169e3a4258b5088",
     "/polyfills.586a6f99b1cbc627.js": "94550995414cab4cb063c050ced4a83a8b2f9a74",
     "/runtime.f7251700f7c17a05.js": "2ce1c6f03e3126f4d7175344f37ad735aa0bfa51",

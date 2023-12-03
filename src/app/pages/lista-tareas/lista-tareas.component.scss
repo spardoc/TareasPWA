@@ -1,21 +1,41 @@
+/* Estilos para el contenedor de la lista */
 ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 20px 0;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    margin: 20px auto;
     font-family: Arial, sans-serif;
+    text-align: center;
+    width: 50%; /* Ajusta el ancho del contenedor según tus necesidades */
 }
 
+/* Estilos para cada ítem de la lista */
 li {
     margin-bottom: 10px;
+    list-style-type: none;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+/* Estilos para el ícono antes de cada ítem de la lista */
+li::before {
+    content: "✔";
+    color: #29E620;
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+/* Estilos para los enlaces dentro de la lista */
 a {
     text-decoration: none;
-    color: #3498db;
+    color: black;
     font-weight: bold;
     transition: color 0.3s ease;
 }
 
+/* Estilos para los enlaces cuando el cursor está sobre ellos */
 a:hover {
-    color: #2980b9;
+    color: black;
 }

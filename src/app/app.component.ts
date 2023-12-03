@@ -6,12 +6,6 @@ import { TareasFirebaseService } from 'src/app/services/tareas-firebase.service'
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
-  constructor(private tareasFirebaseService: TareasFirebaseService) {}
-
-  ngOnInit() {
-    window.addEventListener('online', () => {
-      this.tareasFirebaseService.subirTareasPendientes();
-    });
-  }
+export class AppComponent{
+  title = 'TareasPWA';
 }
